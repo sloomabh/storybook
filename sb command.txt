@@ -1,0 +1,6 @@
+
+* install storybook :
+ > npx -p @storybook/cli sb  init
+
+* run it :
+  > npm run storybook
