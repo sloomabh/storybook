@@ -5,9 +5,9 @@ import { Large } from "../Input/Input.stories";
 export default {
   title: "test/salim/Subscription",
 };
-export const PrimarySubscription = () => {
+export const PrimarySubscription = () => (
   <>
     <Large />
     <Primary />
-  </>;
-};
+  </>
+);
