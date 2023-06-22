@@ -1,15 +1,24 @@
 /** @type { import('@storybook/react').Preview } */
 import React from "react";
 import Center from "../src/components/Center/Center";
-import { ThemeProvider, theme, CSSReset, Box } from "@chakra-ui/core";
-import { withConsole } from "@storybook/addon-console";
+import { ChakraProvider, CSSReset, Box } from "@chakra-ui/react";
+//import { withConsole } from "@storybook/addon-console";
+import { withKnobs } from "@storybook/addon-knobs";
+
+import {
+  INITIAL_VIEWPORTS,
+  INITIAL_VIEWPORTS_DEFAULT,
+} from "@storybook/addon-viewport";
+
 const preview = {
   decorators: [
+    withKnobs,
+
     (story) => (
-      <ThemeProvider theme={theme}>
+      <ChakraProvider>
         <CSSReset />
         <Box m="12"> {story()} </Box>
-      </ThemeProvider>
+      </ChakraProvider>
     ),
   ],
   parameters: {
@@ -25,6 +34,12 @@ const preview = {
         a.id === b.id
           ? 0
           : a.id.localeCompare(b.id, undefined, { numeric: true }),
+    },
+    viewport: {
+      viewports: {
+        ...INITIAL_VIEWPORTS,
+        ...INITIAL_VIEWPORTS_DEFAULT,
+      },
     },
   },
 };
